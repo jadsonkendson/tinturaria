@@ -24,10 +24,11 @@ Permissao.hasMany(Usuario);
 Usuario.belongsTo(Permissao);
 
 //SYNC MODELOS
-Usuario.sync()
+
 Professor.sync()
 Permissao.sync()
 Admin.sync()
+Usuario.sync()
 
 
 module.exports = connection;
