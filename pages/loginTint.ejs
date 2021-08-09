@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+</head>
+
+<body>
+    <h1>LOGIN</h1>
+
+    <form class="form" id="loginSenha">
+        <div id="card">
+            <div class="row">
+                <div class="col-12" id="cardtop">
+                    <img class="imglogo" src="assets/img/logo/guara_rchlo.png" alt="Logo-Riachuelo-Guararapes">
+
+                    <div id="group-card">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="usuario" id="usuario" placeholder="Usuário">
+                    </div>
+
+
+                    <div id="group-card">
+                        <i class="fas fa-unlock-alt"></i>
+                        <input type="password" id="senha" name="senha" placeholder="Senha">
+                    </div>
+
+                    <div>
+
+                        <input type="submit" value="ACESSAR" id="botao-acessar" onclick="validacao()">
+                        <a href="assets/html/inserir.html">teste</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <!-- <form id="formLogin">
+
+
+
+        <label for="">Usuario</label><br>
+        <input type="text" name="usuario" id="usuario"><br>
+        <label for="">Senha</label><br>
+        <input type="password" name="senha" id="senha"><br>
+        <button type="submit"> Entrar </button>
+   
+   
+   
+   
+    </form> -->
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#formLogin').submit(function(event) {
+            event.preventDefault()
+
+            var user = {
+                usuario: $('#usuario').val(),
+                senha: $('#senha').val()
+            }
+
+            var bodyRec = JSON.stringify(user);
+
+            $.ajax({
+                url: '/api/login',
+                type: 'post',
+                data: bodyRec,
+                contentType: 'application/json',
+            }).done((data) => {
+                console.log(data);
+            }).fail((error) => {
+                console.log(error);
+                alert(error.responseJSON.error);
+            })
+        })
+    </script>
+</body>
+
+</html>

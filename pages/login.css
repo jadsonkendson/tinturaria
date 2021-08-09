@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #161f24;
+    font-family: sans-serif;
+}
+
+.form {
+    width: 350px;
+    margin: auto;
+    padding-top: 100px;
+}
+
+#card {
+    box-shadow: 2px 3px 5px;
+    background-color: #e0e0e0;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+#cardtop {
+    text-align: center;
+}
+
+.imglogo {
+    width: 280px;
+    margin-bottom: 30px;
+}
+
+#group-card {
+    font-family: Calibri;
+    margin-bottom: 10px;
+}
+
+#group-card>input {
+    border-radius: 10px;
+    outline: 0px;
+    padding-left: 5px;
+    width: 250px;
+    height: 30px;
+}
+
+input[type=button],
+#botao-acessar {
+    background: linear-gradient(180deg, rgba(0, 255, 136, 0.775), rgba(0, 195, 255, 0.816));
+    color: rgb(255, 255, 255);
+    box-shadow: 3px 2px 3px #161f24;
+    /* margin-left: 8%;
+    margin-top: 2%;
+    margin-bottom: 5%
+    padding-top: 1%; */
+    margin-bottom: 15px;
+    font-size: 125%;
+}

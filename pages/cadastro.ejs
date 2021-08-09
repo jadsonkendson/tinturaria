@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="padroes.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/icons/esquema-de-cores.png">
+
+    <title>Cadastro</title>
+
+</head>
+
+<body style="background:  #161f24;">
+
+
+    <div style="background: rgba(255, 255, 255, 0.933); ">
+        <hr id="linha1">
+        <!-- <hr id="linha2" style="background: rgb(0, 234, 255); height: 3px;padding: 0;margin: 0;"> -->
+        <center><img src="../img/logo/logo tinturaria - azul.png" id="logo-tint" alt=""></center>
+
+    </div>
+
+    <!-- navbar-dark  bg-dark" -->
+    <hr id="linha1">
+
+    <!-- CADSTRO DE USUÁRIO -->
+
+    <div class="container">
+        <form id="formCadastro">
+            <center>
+                <img src="img/titulos/img_cadastro.png" class="img_cadastro" alt="img_cadastro">
+            </center>
+            <!-- <p>CADASTRO</p> -->
+
+            <div class="form-row justify-content-center">
+
+                <div class="input-group mb-3 col-12 col-xl-10 col-lg-10 col-sm-12">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">SETOR</label>
+                    </div>
+                    <select class="custom-select" id="setor">
+                          <option selected disabled>SELECIONE</option>
+                          <option value="1" >TINGIMENTO DE MALHA</option>
+                          <option value="2">TINGIMENTO DE FIO/AVIAMENTO</option>
+                          <!-- <option value="3" disabled>MS</option> -->
+                        </select>
+                </div>
+
+                <div class="input-group mb-3 col-12 col-xl-5 col-lg-5 col-sm-12">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text" type="text">NOME</span>
+                    </div>
+                    <input type="text" id="nome" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 col-12 col-xl-5 col-lg-5 col-sm-12">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text" type="text">MATRÍCULA</span>
+                    </div>
+                    <input type="number" id="matricula" min="0" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 col-12 col-xl-5 col-lg-5 col-sm-12">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text" type="text">SENHA</span>
+                    </div>
+                    <input type="password" id="senha" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 col-12 col-xl-5 col-lg-5 col-sm-12">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text" type="text">CONFIRMAR SENHA</span>
+                    </div>
+                    <input type="password" id="confirmarSenha" class="form-control">
+                </div>
+
+
+
+
+            </div>
+
+
+            <input type="submit" class="btn col-10 offset-1" id="botao-inserir" value="CADASTRAR">
+
+    </div>
+    </form>
+
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#criar').click(function(event) {
+            event.preventDefault()
+            var chave = {
+                numero_chave: $('#numero').val(),
+                sala: $('#sala').val(),
+                status: true
+            }
+            var bodyRec = JSON.stringify(chave)
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/cadastrarchaves',
+                data: bodyRec,
+                contentType: 'application/json',
+                beforeSend: function(data) {
+                    console.log('tentando')
+                }
+
+            }).done(function(data) {
+                console.log(data)
+                alert('CHAVE CRIADA!')
+                window.location = '/home'
+                    // console.log('teste')
+            }).fail(function(data) {
+
+                alert('erro')
+            })
+        }) -->
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>
+    <script>
+        $('#botao-inserir').click(function(event) {
+            event.preventDefault()
+
+            var usuario = {
+                setor: $('#setor').val(),
+                nome: $('#nome').val(),
+                matricula: $('#matricula').val(),
+                senha: $('#senha').val()
+            }
+
+            var bodyRec = JSON.stringify(usuario);
+
+            $.ajax({
+                url: '/api/cadastro',
+                type: 'post',
+                data: bodyRec,
+                contentType: 'application/json',
+                beforeSend: function(data) {
+                    console.log('teste');
+                }
+            }).done((data) => {
+                window.location.href = "/login";
+                console.log(data);
+
+                if (data.created) {
+                    alert('Usuario criado com sucesso')
+                }
+            }).fail((error) => {
+                alert('erro ao cadastrar')
+                console.log(error);
+
+            })
+        })
+    </script>
+</body>
+
+</html>

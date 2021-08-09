@@ -1,0 +1,122 @@
+* {
+    font-family: 'inter', Arial, Helvetica, sans-serif;
+}
+
+p {
+    text-align: center;
+    padding-bottom: 0;
+    color: white;
+    padding-top: 3%;
+    font-size: 250%;
+}
+
+#linha1 {
+    background: linear-gradient(180deg, rgb(0, 255, 136), rgb(0, 195, 255));
+    height: 5px;
+    padding: 0;
+    margin: 0;
+}
+
+#logo-tint {
+    /* padding-top: 5%; */
+    width: 45%;
+    margin: auto;
+    justify-content: center;
+}
+
+#botao-adicionar {
+    background: linear-gradient(180deg, rgba(0, 255, 136, 0.775), rgba(0, 195, 255, 0.816));
+    color: white;
+    margin-left: 8%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding-top: 1%;
+    font-size: 125%;
+}
+
+#background-menu a:hover {
+    color: rgba(255, 255, 255, 0.775);
+    /* box-shadow: 2px 1px 3px 1px; */
+}
+
+#barra {
+    padding: 0;
+    margin: 0;
+    background: rgb(124, 124, 124);
+    /* border: solid 0.3px rgba(79, 79, 79, 0.207);
+    box-shadow: 2px 1px 2px 1px; */
+}
+
+#menu-pequeno {
+    color: white;
+    background: none;
+}
+
+#menu-pequeno a:hover {
+    box-shadow: 2px 1px 2px 1px;
+}
+
+
+/* ########## STATUS  ########## */
+
+
+/* === classse para lista de status === */
+
+#botao-inserir {
+    background: linear-gradient(180deg, rgba(0, 255, 136, 0.775), rgba(0, 195, 255, 0.816));
+    color: white;
+    margin-left: 8%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding-top: 1%;
+    font-size: 125%;
+}
+
+.botaolista {
+    background: rgb(22, 31, 36);
+}
+
+.botaotamanho {
+    width: 100%;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    font-size: 60%;
+    font-weight: bold;
+}
+
+.botaolista button:hover {
+    color: rgb(0, 221, 255);
+}
+
+.card-body {
+    color: white;
+}
+
+#titulo {
+    color: rgb(0, 221, 255);
+}
+
+#tabela-status {
+    color: white;
+    text-align: center;
+}
+
+#tabela-titulo {
+    color: rgb(0, 237, 172);
+    font-size: 14px;
+}
+
+.valorTabela {
+    font-size: 13px;
+}
+
+
+/* ================ CADASTRO  =================== */
+
+.img_cadastro {
+    width: 480px;
+}
+
+#formCadastro {
+    margin: auto;
+}

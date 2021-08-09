@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="padroes.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/icons/esquema-de-cores.png">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="padroes.css">
+
+</head>
+
+<body style="background-color: #161f24">
+    <div style="background: rgba(255, 255, 255, 0.933); ">
+        <hr id="linha1">
+        <!-- <hr id="linha2" style="background: rgb(0, 234, 255); height: 3px;padding: 0;margin: 0;"> -->
+        <center><img src="../img/logo/logo tinturaria - azul.png" id="logo-tint" alt=""></center>
+
+    </div>
+
+    <!-- navbar-dark  bg-dark" -->
+    <hr id="linha1">
+
+
+    <form class="form" id="formLogin">
+        <div id="card">
+            <div class="row">
+                <div class="col-12" id="cardtop">
+                    <img class="imglogo" src="img/titulos/img_login2.png" alt="Logo-Riachuelo-Guararapes">
+
+
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Matrícula" id="usuario" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"> <i class="fas fa-unlock-alt"></i></span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Senha" id="senha" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div>
+                        <input type="submit" class="btn col-12 " value="ACESSAR" id="botao-acessar"><br>
+                        <a href="/cadastro">Desejo cadastrar-me!</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#formLogin').submit(function(event) {
+            event.preventDefault()
+
+            var user = {
+                usuario: $('#usuario').val(),
+                senha: $('#senha').val()
+            }
+
+            var bodyRec = JSON.stringify(user);
+
+            $.ajax({
+                url: '/api/login',
+                type: 'post',
+                data: bodyRec,
+                contentType: 'application/json',
+            }).done((data) => {
+                console.log(data);
+                window.location = '/inserir'
+
+            }).fail((error) => {
+                console.log(error);
+                alert(error.responseJSON.error);
+            })
+        })
+    </script>
+</body>
+
+</html>
