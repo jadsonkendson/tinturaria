@@ -66,6 +66,7 @@
             var user = {
                 matricula: $('#usuario').val(),
                 senha: $('#senha').val()
+
             }
 
             var bodyRec = JSON.stringify(user);
@@ -77,7 +78,7 @@
                 contentType: 'application/json',
             }).done((data) => {
                 console.log(data);
-                alert("logado ")
+                alert("logado " + user.matricula)
                 window.location = '/inserir'
 
             }).fail((error) => {
