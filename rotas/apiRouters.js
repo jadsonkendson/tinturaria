@@ -15,11 +15,11 @@ router.post('/cadastro', UsuarioController.register);
 
 
 
-//ROTAS API USUARIO
-router.get('/admins', AdminController.getAll);
-router.get('/admin/:id', AdminController.getById);
-router.post('/login', AdminController.login);
-router.post('/cadastro', AdminController.register);
+//ROTAS API ADMIN
+// router.get('/admins', AdminController.getAll);
+// router.get('/admin/:id', AdminController.getById);
+// router.post('/login', AdminController.login);
+// router.post('/cadastro', AdminController.register);
 
 
 

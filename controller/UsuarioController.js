@@ -19,7 +19,7 @@ module.exports = {
             const { matricula, senha } = req.body
             const usuarioLogin = await Usuario.findOne({
                 where: {
-                    usuario: matricula
+                    matricula: matricula
                 }
             })
 
