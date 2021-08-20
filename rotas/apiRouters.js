@@ -3,7 +3,8 @@ var express = require('express');
 // const ProfessorController = require('../controller/ProfessorController');
 // const AdminController = require('../controller/AdminController');
 const UsuarioController = require('../controller/UsuarioController');
-const MaquinaController = require('../controller/MaquinaController');
+const MaqTintController = require('../controller/MaqTintController');
+const MaqTinfController = require('../controller/MaqTinfController');
 
 //Carregar routers do Express
 var router = express.Router();
@@ -14,8 +15,11 @@ router.get('/usuario/:id', UsuarioController.getById);
 router.post('/login', UsuarioController.login);
 router.post('/cadastro', UsuarioController.register);
 
-//ROTAS API MAQUINA
-router.get('/maquina', MaquinaController.getAll);
+//ROTAS API MAQUINA TINGIMENTO DE MALHA
+router.get('/maqtint', MaqTintController.getAll);
+
+//ROTAS API MAQUINA TINGIMENTO DE FIO
+router.get('/maqtinf', MaqTinfController.getAll);
 
 
 //ROTAS API ADMIN

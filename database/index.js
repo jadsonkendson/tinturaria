@@ -8,10 +8,12 @@ const Admin = require('../models/Admin')
 const Professor = require('../models/Prof')
 const Permissao = require('../models/Permission')
 const Usuario = require('../models/Usuario')
-const Maquina = require('../models/Maquina')
+const MaqTint = require('../models/MaqTint');
+const MaqTinf = require('../models/MaqTinf');
 
 //INICIALIZACAO DOS MODELOS
-Maquina.init(connection)
+MaqTint.init(connection)
+MaqTinf.init(connection)
 Admin.init(connection)
 Usuario.init(connection)
 Permissao.init(connection)
@@ -28,11 +30,14 @@ Usuario.belongsTo(Permissao);
 
 //SYNC MODELOS
 
-Maquina.sync()
-Professor.sync()
-Permissao.sync()
+MaqTint.sync()
+MaqTinf.sync()
 Admin.sync()
 Usuario.sync()
+
+
+Professor.sync()
+Permissao.sync()
 
 
 module.exports = connection;

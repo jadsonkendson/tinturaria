@@ -1,18 +1,24 @@
 const { Model, DataTypes } = require('sequelize')
 
-class Maquina extends Model {
+class MaqTinf extends Model {
     static init(sequelize) {
         super.init({
                 grupo: {
-                    type: DataTypes.STRING,
+                    type: DataTypes.STRING(20),
                     allowNull: false,
 
 
                 },
                 nome: {
-                    type: DataTypes.STRING,
+                    type: DataTypes.STRING(20),
                     allowNull: false,
                     unique: true
+
+                },
+                setor: {
+                    type: DataTypes.STRING(20),
+                    allowNull: false,
+
 
                 }
 
@@ -20,10 +26,10 @@ class Maquina extends Model {
 
             {
                 sequelize,
-                modelName: 'maquina',
+                modelName: 'maquinastinf',
                 paranoid: true
             })
     }
 }
 
-module.exports = Maquina;
+module.exports = MaqTinf;

@@ -20,11 +20,13 @@ module.exports = {
             const usuarioLogin = await Usuario.findOne({
                 where: {
                     matricula: matricula
+
                 }
             })
 
             if (usuarioLogin.senha == senha) {
                 res.json(usuarioLogin)
+
             } else {
                 res.status(401).json({ error: 'Falha de permissao ou / senha' })
             }

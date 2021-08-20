@@ -38,7 +38,17 @@
 
             <div class="form-row justify-content-center">
 
+                <!-- <div id="alertSim" class="alert alert-success alert-dismissible fade show" role="alert">
+                    Usuário cadastrado com SUCESSO!
+                </div>
+                <div id="alertNao" class="alert alert-danger" role="alert">
+                    Erro ao cadastrar!
+                </div> -->
+
                 <div class="input-group mb-3 col-12 col-xl-10 col-lg-10 col-sm-12">
+
+
+
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">SETOR</label>
                     </div>
@@ -130,6 +140,9 @@
     <script>
         $('#botao-inserir').click(function(event) {
             event.preventDefault()
+
+            // $("#alertSim").hide();
+            // $("alertNao").hide();
 
             var usuario = {
                 setor: $('#setor').val(),
