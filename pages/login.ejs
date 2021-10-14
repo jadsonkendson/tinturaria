@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="padroes.css">
 
+
+
 </head>
+
+
 
 <body style="background-color: #161f24">
     <div style="background: rgba(255, 255, 255, 0.933); ">
@@ -59,6 +63,10 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
     <script>
         $('#formLogin').submit(function(event) {
             event.preventDefault()
@@ -78,6 +86,8 @@
                 contentType: 'application/json',
             }).done((data) => {
                 console.log(data);
+
+                // swal("Good job!", "You clicked the button!", "success")
                 alert("logado")
                 window.location = '/inserir'
 

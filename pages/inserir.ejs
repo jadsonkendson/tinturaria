@@ -87,7 +87,7 @@
                     <hr id="barra">
                 </li>
                 <li class="nav-item" id="background-menu">
-                    <a class="nav-link" href="status.html">STATUS</a>
+                    <a class="nav-link" href="">STATUS</a>
                     <hr id="barra">
                 </li>
 
@@ -131,7 +131,7 @@
                         <!-- SITUAÇÃO -->
                         <div class="input-group mb-3 col-12 ">
                             <div class="input-group-prepend ">
-                                <label class="input-group-text" for="inputGroupSelect01 ">PROCESSO</label>
+                                <label class="input-group-text" for="inputGroupSelect01">PROCESSO</label>
                             </div>
                             <select class="custom-select " id="selecao-situacao">
                                     <option selected disabled> Selecione </option>
@@ -273,17 +273,17 @@
                         <!-- HORA -->
                         <!-- INÍCIO -->
                         <div class="input-group mb-3 col-12 col-xl-6 col-lg-6 col-sm-6">
-                            <div class="input-group-prepend ">
-                                <span class="input-group-text " id="basic-addon1 ">INÍCIO</span>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">INÍCIO</span>
                             </div>
                             <input type="time" class="form-control" aria-label="Usuário" aria-describedby="basic-addon1">
                         </div>
                         <!-- FINAL -->
-                        <div class="input-group mb-3 col-12 col-xl-6 col-lg-6 col-sm-6 ">
+                        <div class="input-group mb-3 col-12 col-xl-6 col-lg-6 col-sm-6">
                             <div class="input-group-prepend ">
                                 <span class="input-group-text " id="basic-addon1">FINAL</span>
                             </div>
-                            <input type="time" class="form-control" aria-label="Usuário" aria-describedby="basic-addon1 ">
+                            <input type="time" class="form-control" aria-label="Usuário" aria-describedby="basic-addon1">
                         </div>
 
                     </div>
@@ -298,40 +298,181 @@
                 </form>
             </div>
 
-
-
-
         </div>
 
 
 
-
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js">
-        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            $('#formInserir').submit(function(event) {
-                event.preventDefault()
-                var maquina = {
-                    maquina: $('#usuario').val(),
-                    grupo: $('#senha').val()
-                }
-                var bodyRec = JSON.stringify(user);
+            function addPartida() {
 
                 $.ajax({
-                    url: '/api/login',
-                    type: 'post',
+                    type: 'POST',
+                    url: 'api/addPartida',
                     data: bodyRec,
                     contentType: 'application/json',
-                }).done((data) => {
+                }).done(function(data) {
+                    let html = '';
                     console.log(data);
-                    window.location = '/home'
 
-                }).fail((error) => {
-                    console.log(error);
-                    alert(error.responseJSON.error);
+                    for (item of data) {
+                        if (item.setor == '1') {
+                            html += ' <div class="input-group mb-3 col-12 "> <div class="input-group-prepend "><label class="input-group-text" for="inputGroupSelect01">PROCESSO</label></div>'
+                            html += '<select class="custom-select " id="selecao-situacao">'
+                            html += '< option selected disabled > Selecione < /option>'
+                            html += '<option value = "1" > TINGIMENTO < /option>'
+                            html += ' <option value = "2" > LAVAGEM < /option> '
+                            html += '<option value = "3" > REPROCESSO < /option>'
+                            html += ' <option value = "4" > LAVAGEM DE MÁQUINA < /option> < /select > </div>'
+
+
+
+
+                        }
+                    }
+
                 })
+            }
+
+
+
+
+
+            $.ajax({
+                url: '/api/login',
+                type: 'post',
+                data: bodyRec,
+                contentType: 'application/json',
+            }).done((data) => {
+                console.log(data);
+                window.location = '/home'
+
+            }).fail((error) => {
+                console.log(error);
+                alert(error.responseJSON.error);
             })
+
+
+            // ===================== TESTE ======================
+
+
+            // $.ajax({
+            //                 type: 'GET',
+            //                 url: '/api/listarchaves'
+            //             }).done(function(data) {
+            //                 let html = '';
+            //                 console.log(data);
+
+            //                 for (let item of data) {
+            //                     if (item.status == 1) {
+            //                         html += '<div class="row col-4  mb-4 text-center m-0" >'
+            //                         html += '<div class="col">'
+            //                         html += '<div class="card mb-4 rounded-3 shadow-sm border-success">'
+            //                         html += '<div class="card-header bg-success py-3" style="color: white;">'
+            //                         html += '<h4 class="my-0 fw-normal"><i class="fas fa-key" style="color: #FFCA2C"></i> CHAVE ' + item.numero_chave + '</h4>'
+            //                         html += '</div>'
+            //                         html += '<div class="card-body">'
+            //                         html += '<ul class="list-unstyled mt-3 mb-4">'
+            //                         html += '<li><h3>' + item.sala + '</h3> Chave livre para emprestimo</li>'
+            //                         html += '</ul>'
+            //                         html += '<button type="button" class="w-100 btn btn-lg btn-success" onclick="emprestar(' + item.id + ')">Emprestar</button>'
+            //                         html += '</div>'
+            //                         html += '</div></div></div>'
+            //                             // html +=
+            //                             //     html +=
+            //                     } else {
+            //                         html += '<div class="row col-4  mb-4 text-center m-0" >'
+            //                         html += '<div class="col">'
+            //                         html += '<div class="card mb-4 rounded-3 shadow-sm border-danger">'
+            //                         html += '<div class="card-header bg-danger py-3" style="color: white;">'
+            //                         html += '<h4 class="my-0 fw-normal"><i class="fas fa-key" style="color: #FFCA2C"></i> CHAVE ' + item.numero_chave + '</h4>'
+            //                         html += '</div>'
+            //                         html += '<div class="card-body">'
+            //                         html += '<ul class="list-unstyled mt-3 mb-4">'
+            //                         html += '<li><h3>' + item.sala + '</h3> Chave emprestada.</li>'
+            //                         html += '</ul>'
+            //                         html += '<button type="button" class="w-100 btn btn-lg btn-danger" ' + item.id + ' onclick="devolver(' + item.id + ')">Devolver</button>'
+            //                         html += '</div></div></div></div>'
+            //                     }
+            //                 }
+            //                 $('#listagem').html(html)
+
+            //             }).fail(function(data) {
+            //                 alert(Error)
+            //             })
+            //         }
+
+
+            //         function emprestar(id) {
+
+            //             $.ajax({
+            //                 url: 'api/atualizarchaves',
+            //                 type: 'put',
+            //                 data: JSON.stringify({
+            //                     status: false,
+            //                     idChave: id
+            //                 }),
+            //                 contentType: 'application/json'
+
+            //             }).done(function(data) {
+            //                 console.log('entrou')
+            //                 listarChaves()
+            //             }).fail(function(error) {
+
+            //                 console.log('erro' + error)
+            //             })
+            //         }
+
+            //         function devolver(id) {
+
+
+            //             $.ajax({
+            //                 url: 'api/atualizarchaves',
+            //                 type: 'PUT',
+            //                 data: JSON.stringify({
+            //                     status: true,
+            //                     idChave: id
+            //                 }),
+            //                 contentType: 'application/json'
+
+            //             }).done(function() {
+            //                 listarChaves()
+            //             }).fail(function(error) {
+
+            //                 console.log('erro' + error)
+            //             })
+            //         }
+
+            //         $('#btnCadastrarChave').click(function() {
+            //             window.location = '/cadastro'
+            //         })
+
+            // ===================== TESTE ======================
+
+            // $('#formInserir').submit(function(event) {
+            //     event.preventDefault()
+            //     var maquina = {
+            //         maquina: $('#usuario').val(),
+            //         grupo: $('#senha').val()
+            //     }
+            //     var bodyRec = JSON.stringify();
+            //     user
+
+            //     $.ajax({
+            //         url: '/api/login',
+            //         type: 'post',
+            //         data: bodyRec,
+            //         contentType: 'application/json',
+            //     }).done((data) => {
+            //         console.log(data);
+            //         window.location = '/home'
+
+            //     }).fail((error) => {
+            //         console.log(error);
+            //         alert(error.responseJSON.error);
+            //     })
+            // })
         </script>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>

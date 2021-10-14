@@ -10,14 +10,17 @@ const Permissao = require('../models/Permission')
 const Usuario = require('../models/Usuario')
 const MaqTint = require('../models/MaqTint');
 const MaqTinf = require('../models/MaqTinf');
+const Partida = require('../models/Partida');
 
 //INICIALIZACAO DOS MODELOS
 MaqTint.init(connection)
 MaqTinf.init(connection)
 Admin.init(connection)
 Usuario.init(connection)
+Partida.init(connection)
 Permissao.init(connection)
 Professor.init(connection)
+
 
 //RELACIOANAMENTOS
 
@@ -34,6 +37,7 @@ MaqTint.sync()
 MaqTinf.sync()
 Admin.sync()
 Usuario.sync()
+Partida.sync()
 
 
 Professor.sync()
